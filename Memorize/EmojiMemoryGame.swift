@@ -9,15 +9,12 @@ import SwiftUI
 
 class EmojiMemoryGame {
 
-    private var model: MemoryGame<String> = createMemoryGame()
-      
-    static func createMemoryGame() -> MemoryGame<String> {
-        
-        let emojis = ["👻","🎃","🕷"]
-        
-        return MemoryGame<String>(numberOfPairsOfCards: emojis.count) { pairIndex in emojis[pairIndex] }
-        
-
+    private var model: MemoryGame<String> = createMemoryGame(numberOfPairsOfCards: 5)// .random(in: 1...5))
+    
+    static func createMemoryGame(numberOfPairsOfCards cardsPair: Int) -> MemoryGame<String> {
+        let emojis = ["👻","🎃","🕷","💀","🏴‍☠️"]
+        let cardsPair = min(cardsPair, emojis.count)
+        return MemoryGame<String>(numberOfPairsOfCards: cardsPair) { pairIndex in emojis[pairIndex] }
     }
     
     // MARK: — Access to the Model:
