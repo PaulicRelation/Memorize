@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-class EmojiMemoryGame {
-
-    private var model: MemoryGame<String> = createMemoryGame(numberOfPairsOfCards: 5)// .random(in: 1...5))
+class EmojiMemoryGame: ObservableObject {
+   
+    @Published private var model: MemoryGame<String> =
+        createMemoryGame(numberOfPairsOfCards: .random(in: 1...5))
     
     static func createMemoryGame(numberOfPairsOfCards cardsPair: Int) -> MemoryGame<String> {
         let emojis = ["👻","🎃","🕷","💀","🏴‍☠️"]
@@ -17,7 +18,7 @@ class EmojiMemoryGame {
         return MemoryGame<String>(numberOfPairsOfCards: cardsPair) { pairIndex in emojis[pairIndex] }
     }
     
-    // MARK: — Access to the Model:
+    // MARK: — Access to the Model
     
     var cards: Array<MemoryGame<String>.Card> {
         return model.cards
@@ -26,6 +27,7 @@ class EmojiMemoryGame {
     //MARK: - Intent (s)
     
     func choose(card: MemoryGame<String>.Card) {
+    //    objectWillChange.send()
         model.choose(card: card)
         
     }
