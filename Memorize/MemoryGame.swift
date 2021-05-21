@@ -39,7 +39,6 @@ struct MemoryGame<CardContent> {
         var isFaceUp: Bool = true
         let isMatched: Bool = false
         let content: CardContent
-        
     }
     
 }
