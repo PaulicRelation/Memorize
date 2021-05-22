@@ -31,7 +31,7 @@ struct CardView: View {
         }
     }
     
-    fileprivate func body(for size: CGSize) -> some View {
+    private func body(for size: CGSize) -> some View {
         // MARK:  Drawing Constants
         let cornerRadius: CGFloat = 10.0
         let edgeLineWidth: CGFloat = 3.0
