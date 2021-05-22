@@ -30,18 +30,15 @@ struct Grid<Item, ItemView>: View where Item: Identifiable, ItemView: View {
     }
     
     fileprivate func body(for item: Item, in layaut: GridLayout) -> some View {
-        return viewForItem(item)
-            .frame(width: layaut.itemSize.width,
-                   height: layaut.itemSize.height,
-                   alignment: .center)
-            .position(layaut.location(ofItemAt: index(of: item)))
-    }
-    
-    func index (of item: Item)-> Int {
-        for index in 0..<self.items.count {
-            if self.items[index].id == item.id { return index }
+        return Group {
+            if  let index = items.firstIndex(matching: item) {
+                viewForItem(item)
+                    .frame(width: layaut.itemSize.width,
+                           height: layaut.itemSize.height,
+                           alignment: .center)
+                    .position(layaut.location(ofItemAt: index))
+            }
         }
-        return 0 // TODO: remove bogus
     }
     
 }

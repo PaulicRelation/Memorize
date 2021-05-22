@@ -105,13 +105,13 @@
 		E971817A261C89EB0028B0A4 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				E97CDCAD2658DFF900CC6D92 /* Exyensions */,
 				E971817B261C89EB0028B0A4 /* MemorizeApp.swift */,
 				E971817D261C89EB0028B0A4 /* EmojiMemoryGameView.swift */,
 				E97CDCA7265824BB00CC6D92 /* Grid.swift */,
 				E97CDCA92658436E00CC6D92 /* GridLayout.swift */,
 				E97181AE261CFCED0028B0A4 /* EmojiMemoryGame.swift */,
 				E97181A9261CE8550028B0A4 /* MemoryGame.swift */,
-				E97CDCAB2658DD2F00CC6D92 /* Array+Identifiable.swift */,
 				E971817F261C89EE0028B0A4 /* Assets.xcassets */,
 				E9718184261C89EE0028B0A4 /* Info.plist */,
 				E9718181261C89EE0028B0A4 /* Preview Content */,
@@ -143,6 +143,14 @@
 				E971819A261C89EE0028B0A4 /* Info.plist */,
 			);
 			path = MemorizeUITests;
+			sourceTree = "<group>";
+		};
+		E97CDCAD2658DFF900CC6D92 /* Exyensions */ = {
+			isa = PBXGroup;
+			children = (
+				E97CDCAB2658DD2F00CC6D92 /* Array+Identifiable.swift */,
+			);
+			path = Exyensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
