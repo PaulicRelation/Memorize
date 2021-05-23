@@ -53,26 +53,20 @@ struct CardView: View {
         }
     }
     
+    @ViewBuilder
     private func body(for size: CGSize) -> some View {
-        // MARK:  Drawing Constants
-        let cornerRadius: CGFloat = 10.0
-        let edgeLineWidth: CGFloat = 3.0
-        let fontScaleFactor: CGFloat = 0.75
-        
-        return ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
-                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
+        if card.isFaceUp || !card.isMatched {
+            ZStack {
+                Pie(startAngle: Angle.degrees(0 - 90),
+                    endAngle: Angle.degrees(110 - 90), clockwise: true)
+                    .padding(5).opacity(0.4)
                 Text(card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
             }
-        }.font(.system(size: min(size.height,
-                                 size.width) * fontScaleFactor))
+            .cardify(isFaceUp: card.isFaceUp)
+            .font(.system(size: min(size.height,
+                                    size.width) * 0.7))
+        }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -80,7 +74,9 @@ struct ContentView_Previews: PreviewProvider {
         
         //ForEach(ColorScheme.allCases, id: \.self) {
         let game = EmojiMemoryGame()
-        EmojiMemoryGameView(viewModel: game).preferredColorScheme(.dark)//($0)
+        game.choose(card: game.cards[0])
+        
+        return EmojiMemoryGameView(viewModel: game).preferredColorScheme(.dark)//($0)
         // }
     }
 }
